@@ -1,25 +1,39 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
+                        {{ __('Products') }}
                     </x-nav-link>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+
+                <!-- Dark Toogle -->
+                <button class="darkToggle relative w-10 h-10 flex items-center justify-center rounded-full transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                    <!-- Sun icon (for light mode) -->
+                    <svg id="sunIcon" class="absolute w-6 h-6 text-yellow-500 transition-transform duration-500 rotate-0 scale-100 dark:scale-0 dark:rotate-90" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414M18.364 18.364l-1.414-1.414M6.05 6.05L4.636 7.464M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+                    </svg>
+
+                    <!-- Moon icon (for dark mode) -->
+                    <svg id="moonIcon" class="absolute w-6 h-6 text-gray-800 dark:text-white transition-transform duration-500 rotate-90 scale-0 dark:scale-100 dark:rotate-0"
+                         fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+                    </svg>
+                </button>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -54,6 +68,23 @@
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
+                <!-- Dark Toogle -->
+                <button class="darkToggle relative w-10 h-10 flex items-center justify-center rounded-full transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                    <!-- Sun icon (for light mode) -->
+                    <svg id="sunIcon" class="absolute w-6 h-6 text-yellow-500 transition-transform duration-500 rotate-0 scale-100 dark:scale-0 dark:rotate-90" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414M18.364 18.364l-1.414-1.414M6.05 6.05L4.636 7.464M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+                    </svg>
+
+                    <!-- Moon icon (for dark mode) -->
+                    <svg id="moonIcon" class="absolute w-6 h-6 text-gray-800 dark:text-white transition-transform duration-500 rotate-90 scale-0 dark:scale-100 dark:rotate-0"
+                         fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+                    </svg>
+                </button>
+
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -69,6 +100,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('products')" :active="request()->routeIs('products')">
+                {{ __('Products') }}
             </x-responsive-nav-link>
         </div>
 
@@ -98,3 +132,25 @@
         </div>
     </div>
 </nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const html = document.documentElement;
+        const toggles = document.querySelectorAll('.darkToggle');
+
+        // Load theme from localStorage
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+        }
+
+        // Attach to all toggle buttons
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            });
+        });
+    });
+</script>
+
+
