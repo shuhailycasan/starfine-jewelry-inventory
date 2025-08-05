@@ -9,11 +9,9 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::view('products','products')->name('products');
+    Route::view('/dashboard','features.dashboard')->name('features.dashboard');
+    Route::view('/products','features.products')->name('features.products');
+    Route::view('/store-settings','features.store_setting')->name('features.store_setting');
 });
 
 

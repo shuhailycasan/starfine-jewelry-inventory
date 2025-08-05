@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center">
             <!-- Logo -->
-            <a href="{{ route('dashboard') }}">
+            <a href="{{ route('features.dashboard') }}">
                 <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200 "/>
             </a>
 
@@ -36,8 +36,6 @@
                     </x-secondary-button>
                 </div>
             </div>
-
-
 
             {{-- Products Table --}}
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -146,15 +144,15 @@
                             </select>
                         </div>
 
-                    <div class="mt-6 flex justify-end space-x-2">
-                        <x-secondary-button x-on:click.prevent="$dispatch('close')">
-                            Cancel
-                        </x-secondary-button>
+                        <div class="mt-6 flex justify-end space-x-2">
+                            <x-secondary-button x-on:click.prevent="$dispatch('close')">
+                                Cancel
+                            </x-secondary-button>
 
-                        <x-primary-button type="submit">
-                            Save Product
-                        </x-primary-button>
-                    </div>
+                            <x-primary-button type="submit">
+                                Save Product
+                            </x-primary-button>
+                        </div>
                 </form>
             </x-modal>
         </div>
