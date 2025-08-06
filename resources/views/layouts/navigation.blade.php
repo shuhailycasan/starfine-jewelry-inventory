@@ -9,11 +9,11 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('features.products')" :active="request()->routeIs('features.products')">
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.products')">
                         {{ __('Products') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('features.store_setting')" :active="request()->routeIs('features.store_setting')">
+                    <x-nav-link :href="route('features.sales')" :active="request()->routeIs('features.sales')">
                         {{ __('Sales') }}
                     </x-nav-link>
 
@@ -21,7 +21,7 @@
                         {{ __('Store Setting') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('features.store_setting')" :active="request()->routeIs('features.store_setting')">
+                    <x-nav-link :href="route('features.users')" :active="request()->routeIs('features.users')">
                         {{ __('Users') }}
                     </x-nav-link>
 
@@ -115,12 +115,19 @@
             <x-responsive-nav-link :href="route('features.dashboard')" :active="request()->routeIs('features.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('features.products')" :active="request()->routeIs('features.products')">
+            <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                 {{ __('Products') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('features.sales')" :active="request()->routeIs('features.sales')">
+                {{ __('Sales') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('features.users')" :active="request()->routeIs('features.users')">
+                {{ __('Users') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('features.store_setting')" :active="request()->routeIs('features.store_setting')">
-                {{ __('Products') }}
+                {{ __('Store Setting') }}
             </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
