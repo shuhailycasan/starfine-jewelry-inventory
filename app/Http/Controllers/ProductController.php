@@ -21,16 +21,20 @@ class ProductController extends Controller
             'karat' => 'required|string',
             'grams' => 'required|numeric|min:0',
             'quantity' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:0',
             'description' => 'nullable|string|max:255',
             'photo' => 'nullable|image|max:2048',
+            'status' => 'required|string',
         ]);
 
         $product = Product::create([
             'name' => $request->input('name'),
             'type' => $request->input('type'),
+            'price' => $request->input('price'),
             'karat' => $request->input('karat'),
             'grams' => $request->input('grams'),
             'quantity' => $request->input('quantity'),
+            'status' => $request->input('status'),
             'description' => $request->input('description') ?? '',
         ]);
 
@@ -40,7 +44,7 @@ class ProductController extends Controller
                 ->toMediaCollection('product_photos');
         }
 
-        return redirect()->route('features.products')->with('success', 'Product created!');
+        return redirect()->route('products.index')->with('success', 'Product created!');
     }
 
     public function update(){

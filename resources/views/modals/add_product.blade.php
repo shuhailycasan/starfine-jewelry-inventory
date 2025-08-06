@@ -14,6 +14,11 @@
             </div>
 
             <div>
+                <x-input-label for="price" :value="'Price'"/>
+                <x-text-input name="price" id="price" class="w-full"/>
+            </div>
+
+            <div>
                 <x-input-label for="type" :value="'Type'"/>
                 <select name="type" id="type" class="w-full">
                     <option value="ring">Ring</option>
@@ -85,5 +90,15 @@
                     Save Product
                 </x-primary-button>
             </div>
+
+        </div>
     </form>
+
+    @if ($errors->any())
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                window.dispatchEvent(new CustomEvent('open-modal', { detail: 'add-product' }))
+            })
+        </script>
+    @endif
 </x-modal>

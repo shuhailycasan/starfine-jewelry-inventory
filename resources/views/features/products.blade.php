@@ -47,12 +47,13 @@
                         <tr class="bg-gray-200 dark:bg-gray-700">
                             <th class="p-2 text-left">Photos</th>
                             <th class="p-2 text-left">Name</th>
+                            <th class="p-2 text-left">Price</th>
                             <th class="p-2 text-left">Type</th>
                             <th class="p-2 text-left">Karat</th>
                             <th class="p-2 text-left">Grams</th>
-                            <th class="p-2 text-left">Price</th>
-                            <th class="p-2 text-left">Stock Quantity</th>
+                            <th class="p-2 text-left">Stock Quant.</th>
                             <th class="p-2 text-left">Description</th>
+                            <th class="p-2 text-left">Status</th>
                             <th class="p-2 text-left">Actions</th>
                         </tr>
                         </thead>
@@ -68,12 +69,13 @@
 
                                 </td>
                                 <td class="p-2">{{ $product->name }}</td>
-                                <td class="p-2">{{ $product->type }}</td>
+                                <td class="p-2">₱{{ $product->price }}</td>
+                                <td class="p-2">{{ $product->formatted_type }}</td>
                                 <td class="p-2">{{ $product->karat }}</td>
                                 <td class="p-2">{{ $product->grams }}g</td>
-                                <td class="p-2">₱{{ $product->price }}</td>
                                 <td class="p-2">{{ $product->quantity }}</td>
                                 <td class="p-2">{{ $product->description }}</td>
+                                <td class="p-2">{{ $product->formatted_status }}</td>
                                 <td class="p-2">
                                     <x-primary-button
                                         class="bg-green-500 hover:bg-green-600 text-white dark:bg-green-700">Edit

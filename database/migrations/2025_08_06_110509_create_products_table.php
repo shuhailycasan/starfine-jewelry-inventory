@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('grams', 8, 2); // adjust precision/scale if needed
             $table->integer('quantity');
             $table->string('description')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }
