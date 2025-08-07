@@ -1,6 +1,22 @@
 {{-- 🔒 Modal Goes Here --}}
+@php
+    $karatPrices = \App\Models\GoldPrice::pluck('price_per_gram', 'karat');
+@endphp
+
 <x-modal name="add-product" :show="false" focusable>
-    <form method="POST" action="{{ route('products.store') }}" class="p-6">
+
+    <form method="POST" action="{{ route('products.store') }}" class="p-6"
+          x-data="{
+        karat: '',
+        grams: 0,
+        karatPrices: @js($karatPrices),
+        get price() {
+            const gram = parseFloat(this.grams) || 0;
+            const pricePerGram = parseFloat(this.karatPrices[this.karat]) || 0;
+            return (gram * pricePerGram).toFixed(2);
+        }
+    }"
+    >
         @csrf
 
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">
@@ -14,8 +30,8 @@
             </div>
 
             <div>
-                <x-input-label for="price" :value="'Price'"/>
-                <x-text-input name="price" id="price" class="w-full"/>
+                <x-input-label for="price" :value="'Final Price'"/>
+                <input type="text" name="price" x-bind:value="price" readonly class="bg-gray-100 cursor-not-allowed w-full"/>
             </div>
 
             <div>
@@ -30,19 +46,18 @@
 
             <div>
                 <x-input-label for="karat" :value="'Karat'"/>
-                <select name="karat" id="karat" class="w-full">
-                    <option value="10k">10k</option>
-                    <option value="14k">14k</option>
-                    <option value="18k">18k</option>
-                    <option value="21k">21k</option>
-                    <option value="24k">24k</option>
+                <select name="karat" id="karat" x-model="karat" class="w-full">
+                    <option value="">Select Karat</option>
+                    @foreach($karatPrices as $karat => $price)
+                        <option value="{{ $karat }}">{{ strtoupper($karat) }}</option>
+                    @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('karat')" class="mt-2" />
             </div>
 
             <div>
                 <x-input-label for="grams" :value="'Weight (g)'"/>
-                <x-text-input name="grams" id="grams" type="number" step="0.01" class="w-full"/>
+                <input type="number" name="grams" x-model.number="grams" step="0.01" class="w-full"/>
 
                 <x-input-error :messages="$errors->get('grams')" class="mt-2" />
             </div>

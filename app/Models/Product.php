@@ -12,6 +12,18 @@ class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
+    //Updated Karat and Grams in Product Table
+    protected static function booted()
+    {
+        static::saving(function ($product) {
+            $goldPrice = GoldPrice::where('karat', $product->karat)->first();
+
+            if ($goldPrice) {
+                $product->price = $goldPrice->price_per_gram * $product->grams;
+            }
+        });
+    }
+
     //Generates Code for the Products
     public static function boot()
     {

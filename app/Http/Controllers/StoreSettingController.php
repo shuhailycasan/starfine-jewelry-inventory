@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GoldPrice;
 use Illuminate\Http\Request;
 
 class StoreSettingController extends Controller
 {
     public function index()
     {
-        $goldPrices = StoreSettingController::all();
+        $goldPrices = GoldPrice::all();
 
         return view('features.store_setting', compact('goldPrices'));
     }
@@ -20,14 +21,14 @@ class StoreSettingController extends Controller
             'price_per_gram' => 'required|numeric|min:0',
         ]);
 
-        StoreSettingController::create($validated);
+        GoldPrice::create($validated);
 
         return redirect()->back()->with('success', 'Gold price added.');
     }
 
     public function destroy($id)
     {
-        StoreSettingController::findOrFail($id)->delete();
+        GoldPrice::findOrFail($id)->delete();
 
         return redirect()->back()->with('success', 'Gold price removed.');
     }

@@ -17,7 +17,7 @@
                         {{ __('Sales') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('features.store_setting')" :active="request()->routeIs('features.store_setting')">
+                    <x-nav-link :href="route('store-setting.index')" :active="request()->routeIs('store-setting.index')">
                         {{ __('Store Setting') }}
                     </x-nav-link>
 
@@ -124,7 +124,7 @@
             <x-responsive-nav-link :href="route('features.users')" :active="request()->routeIs('features.users')">
                 {{ __('Users') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('features.store_setting')" :active="request()->routeIs('features.store_setting')">
+            <x-responsive-nav-link :href="route('store-setting.index')" :active="request()->routeIs('store-setting.index')">
                 {{ __('Store Setting') }}
             </x-responsive-nav-link>
 

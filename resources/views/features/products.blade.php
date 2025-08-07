@@ -45,20 +45,20 @@
                     <table class="w-full table-auto border-collapse">
                         <thead>
                         <tr class="bg-gray-200 dark:bg-gray-700">
-                            <th class="p-2 text-left">Photos</th>
-                            <th class="p-2 text-left">Code</th>
-                            <th class="p-2 text-left">Name</th>
-                            <th class="p-2 text-left">Price</th>
-                            <th class="p-2 text-left">Type</th>
-                            <th class="p-2 text-left">Karat</th>
-                            <th class="p-2 text-left">Grams</th>
-                            <th class="p-2 text-left">Stock Quant.</th>
-                            <th class="p-2 text-left">Description</th>
-                            <th class="p-2 text-left">Status</th>
-                            <th class="p-2 text-left">Actions</th>
+                            <th class="p-2 text-center">Photos</th>
+                            <th class="p-2 text-center">Code</th>
+                            <th class="p-2 text-center">Name</th>
+                            <th class="p-2 text-center">Price</th>
+                            <th class="p-2 text-center">Type</th>
+                            <th class="p-2 text-center">Karat</th>
+                            <th class="p-2 text-center">Grams</th>
+                            <th class="p-2 text-center">Stock Quant.</th>
+                            <th class="p-2 text-center">Description</th>
+                            <th class="p-2 text-center">Status</th>
+                            <th class="p-2 text-center">Actions</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                         @forelse ($products as $product)
                             <tr class="center border-b dark:border-gray-700">
                                 <td class="p-2">
@@ -94,8 +94,6 @@
 
                                     </x-secondary-button>
                                 </td>
-
-
                             </tr>
                         @empty
                             <tr>

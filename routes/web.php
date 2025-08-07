@@ -13,14 +13,13 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function(){
     Route::view('/dashboard','features.dashboard')->name('features.dashboard');
 
-    Route::view('/products','features.products')->name('features.products');
     Route::resource('products', ProductController::class);
 
     Route::view('/sales','features.sales')->name('features.sales');
     Route::view('/users','features.users')->name('features.users');
 
-    Route::view('/store-settings','features.store_setting')->name('features.store_setting');
-    Route::resource('store_setting',StoreSettingController::class);
+
+    Route::resource('store-setting',StoreSettingController::class);
 
 });
 
