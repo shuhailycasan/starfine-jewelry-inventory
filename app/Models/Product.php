@@ -12,6 +12,32 @@ class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
+    //Generates Code for the Products
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($product) {
+            $typePrefix = [
+                'ring' => 'RNG',
+                'bracelet' => 'BRC',
+                'earring' => 'ERG',
+                'necklace' => 'NCK',
+            ];
+
+            $prefix = $typePrefix[strtolower($product->type)] ?? 'PRD';
+
+            // Sanitize karat like "18k" → "18K"
+            $karat = strtoupper($product->karat);
+
+            // Get latest ID + 1 and pad
+            $latestId = Product::max('id') + 1;
+            $sequence = str_pad($latestId, 5, '0', STR_PAD_LEFT);
+
+            $product->code = "{$prefix}-{$karat}-{$sequence}";
+        });
+    }
+
     public function getFormattedStatusAttribute()
     {
         return Str::headline($this->status); // turns "out_of_stock" into "Out Of Stock"
