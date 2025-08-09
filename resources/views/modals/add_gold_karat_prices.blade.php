@@ -1,5 +1,5 @@
 <x-modal name="add-gold-karat-prices" :show="false" focusable>
-    <form method="POST" action="{{ route('store-setting.store') }}" class="p-6 space-y-6">
+    <form method="POST" action="{{ route('gold-price.store') }}" class="p-6 space-y-6">
         @csrf
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

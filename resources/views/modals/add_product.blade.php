@@ -5,7 +5,7 @@
 
 <x-modal name="add-product" :show="false" focusable>
 
-    <form method="POST" action="{{ route('products.store') }}" class="p-6"
+    <form method="POST" enctype="multipart/form-data" action="{{ route('products.store') }}" class="p-6"
           x-data="{
         karat: '',
         grams: 0,

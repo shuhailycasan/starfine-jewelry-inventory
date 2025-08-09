@@ -68,7 +68,7 @@
                                         class="w-16 h-16 object-cover rounded"
                                     />
                                 </td>
-                                <td class="text-sm text-gray-900">{{ $product->code }}</td>
+                                <td class="p-2">{{ $product->code }}</td>
                                 <td class="p-2">{{ $product->name }}</td>
                                 <td class="p-2">₱{{ $product->price }}</td>
                                 <td class="p-2">{{ $product->formatted_type }}</td>
