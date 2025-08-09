@@ -69,4 +69,9 @@ class Product extends Model implements HasMedia
         'description',
         'status'
         ];
+
+    public function karat()
+    {
+        return $this->belongsTo(GoldPrice::class, 'karat_id');
+    }
 }

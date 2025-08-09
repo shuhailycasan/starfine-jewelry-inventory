@@ -11,4 +11,9 @@ class GoldPrice extends Model
         'karat',
         'price_per_gram'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'karat_id');
+    }
 }
